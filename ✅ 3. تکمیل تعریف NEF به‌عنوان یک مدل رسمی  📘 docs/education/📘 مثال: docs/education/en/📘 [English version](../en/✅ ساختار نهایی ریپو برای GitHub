@@ -1,0 +1,80 @@
+apz-chain/
+├── contracts/                  # قراردادهای هوشمند + تست‌ها + Hardhat config
+│   ├── APZToken.sol
+│   ├── Staking.sol
+│   ├── Governance.sol
+│   ├── hardhat.config.js
+│   ├── package.json
+│   ├── .echidna.yaml
+│   └── test/
+│       ├── token.test.js
+│       ├── staking.test.js
+│       ├── governance.test.js
+│       ├── edgecases.test.js
+│       ├── fuzz.test.js
+│       ├── fuzz.seeded.test.js
+│       └── FuzzStaking.t.sol
+├── apps/
+│   ├── api/                    # API با احراز هویت، تیکت، و track
+│   │   ├── package.json
+│   │   ├── .env.example
+│   │   └── src/
+│   │       ├── server.js
+│   │       └── routes/
+│   │           └── tickets.js
+│   ├── indexer/                # ایندکسر بلاک‌چین
+│   │   ├── package.json
+│   │   └── src/index.js
+│   └── web/                    # رابط کاربری وب
+│       ├── package.json
+│       ├── README.md
+│       └── pages/
+│           ├── index.js
+│           ├── api/tracks.js
+│           ├── videos.js
+│           ├── community.js
+│           ├── support.js
+│           └── register.js
+├── docs/                       # مستندات فارسی و انگلیسی
+│   ├── philosophy/easy-learning.md
+│   └── education/
+│       ├── sapnfc.md
+│       ├── models.md
+│       ├── school.md
+│       ├── ticket.md
+│       ├── reddit.md
+│       ├── discord.md
+│       ├── nef.md
+│       └── en/
+│           ├── sapnfc.md
+│           ├── models.md
+│           ├── school.md
+│           ├── ticket.md
+│           ├── reddit.md
+│           ├── discord.md
+│           └── nef.md
+├── scripts/                    # اسکریپت‌های نصب و bootstrap
+│   ├── bootstrap-all.sh
+│   ├── helm-bootstrap.sh
+│   ├── generate-genesis.sh
+│   └── bootstrap-validator.sh
+├── infra/                      # Dockerfiles و Helm charts
+│   ├── docker/
+│   │   ├── node.Dockerfile
+│   │   ├── indexer.Dockerfile
+│   │   └── api.Dockerfile
+│   ├── helm/
+│   │   ├── node/
+│   │   ├── indexer/
+│   │   └── api/
+│   └── devnet/docker-compose.yml
+├── systemd/apz-node.service
+├── openapi.yaml
+├── genesis.json
+├── README.md
+├── .gitignore
+└── .github/workflows/          # CI و تست‌ها
+    ├── contracts-ci.yml
+    ├── fuzz-foundry-echidna.yml
+    ├── ci-ghcr.yml
+    └── ci-dockerhub.yml
