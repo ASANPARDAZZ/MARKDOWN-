@@ -1,0 +1,4 @@
+const { sendReportNotification } = require('../mail');
+
+// داخل POST /report بعد از ذخیره در DB:
+await sendReportNotification({ id, type, description, contact });
