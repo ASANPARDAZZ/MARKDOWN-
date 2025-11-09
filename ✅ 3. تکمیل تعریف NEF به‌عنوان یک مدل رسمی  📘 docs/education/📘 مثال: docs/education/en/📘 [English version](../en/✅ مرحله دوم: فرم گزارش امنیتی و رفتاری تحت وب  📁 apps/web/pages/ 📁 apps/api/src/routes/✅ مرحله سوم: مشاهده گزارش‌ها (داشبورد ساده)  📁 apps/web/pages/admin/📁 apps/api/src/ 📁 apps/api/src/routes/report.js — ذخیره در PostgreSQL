@@ -1,0 +1,34 @@
+const express = require('express');
+const router = express.Router();
+const { v4: uuidv4 } = require('uuid');
+const db = require('../db');
+
+// POST /report
+router.post('/', async (req, res) => {
+  const { type, description, contact } = req.body;
+  if (!type || !description) return res.status(400).json({ error: 'Missing fields' });
+
+  const id = uuidv4();
+  try {
+    await db.query(
+      'INSERT INTO reports (id, type, description, contact) VALUES ($1, $2, $3, $4)',
+      [id, type, description, contact || null]
+    );
+    res.status(201).json({ report: { id, type, description, contact, status: 'pending' } });
+  } catch (err) {
+    console.error('DB error:', err);
+    res.status(500).json({ error: 'Database error' });
+  }
+});
+
+// GET /report
+router.get('/', async (req, res) => {
+  try {
+    const result = await db.query('SELECT * FROM reports ORDER BY created_at DESC');
+    res.json({ reports: result.rows });
+  } catch (err) {
+    res.status(500).json({ error: 'Database error' });
+  }
+});
+
+module.exports = router;
