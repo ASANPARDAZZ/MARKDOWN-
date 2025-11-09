@@ -1,0 +1,24 @@
+
+1. نام ریپو پیشنهادی: apz-chain یا apz-infrastructure
+2. توضیحات ریپو:
+   > Reproducible, auditable, and secure infrastructure for APZ Chain — including smart contracts, API, indexer, web UI, and educational models.
+3. تگ‌ها: blockchain, infrastructure, education, open-source, audit, smart-contracts, CI/CD
+4. لایسنس پیشنهادی: MIT یا Apache 2.0 (در صورت تمایل می‌توانم فایل LICENSE تولید کنم)
+5. فایل .gitignore شامل:
+   `
+   node_modules
+   .env
+   *.zip
+   coverage/
+   cache/
+   artifacts/
+   `
+6. دستور نصب سریع در README.md:
+   `bash
+   git clone https://github.com/asanpardaz/apz-chain.git
+   cd apz-chain
+   npm install --prefix contracts
+   npx hardhat test --prefix contracts
+   `
+
+---
