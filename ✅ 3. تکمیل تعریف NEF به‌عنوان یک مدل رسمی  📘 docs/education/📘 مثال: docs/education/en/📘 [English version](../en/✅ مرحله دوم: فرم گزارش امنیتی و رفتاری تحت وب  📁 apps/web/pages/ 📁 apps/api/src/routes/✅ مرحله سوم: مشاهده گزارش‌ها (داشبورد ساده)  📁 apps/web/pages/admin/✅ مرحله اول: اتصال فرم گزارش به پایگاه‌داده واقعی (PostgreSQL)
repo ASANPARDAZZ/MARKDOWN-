@@ -1,0 +1,8 @@
+CREATE TABLE reports (
+  id UUID PRIMARY KEY,
+  type TEXT NOT NULL,
+  description TEXT NOT NULL,
+  contact TEXT,
+  status TEXT DEFAULT 'pending',
+  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
