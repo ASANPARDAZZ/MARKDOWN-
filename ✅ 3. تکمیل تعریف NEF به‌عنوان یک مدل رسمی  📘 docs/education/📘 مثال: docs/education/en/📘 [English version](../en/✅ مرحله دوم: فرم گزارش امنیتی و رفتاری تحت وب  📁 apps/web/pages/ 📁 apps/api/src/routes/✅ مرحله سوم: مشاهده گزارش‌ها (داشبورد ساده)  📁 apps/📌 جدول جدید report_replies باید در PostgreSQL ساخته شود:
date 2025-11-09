@@ -1,0 +1,7 @@
+CREATE TABLE report_replies (
+  id SERIAL PRIMARY KEY,
+  report_id UUID REFERENCES reports(id),
+  message TEXT NOT NULL,
+  responder TEXT NOT NULL,
+  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
