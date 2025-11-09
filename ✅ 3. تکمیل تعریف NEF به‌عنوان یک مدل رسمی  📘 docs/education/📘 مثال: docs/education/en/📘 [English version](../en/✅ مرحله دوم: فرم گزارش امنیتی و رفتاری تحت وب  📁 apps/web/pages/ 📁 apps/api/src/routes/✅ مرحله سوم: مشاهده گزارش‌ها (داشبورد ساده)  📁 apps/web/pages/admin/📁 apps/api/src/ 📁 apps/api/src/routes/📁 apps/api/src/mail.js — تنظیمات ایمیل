@@ -1,0 +1,29 @@
+// apps/api/src/mail.js
+const nodemailer = require('nodemailer');
+require('dotenv').config();
+
+const transporter = nodemailer.createTransport({
+  service: 'gmail',
+  auth: {
+    user: process.env.MAIL_USER,
+    pass: process.env.MAIL_PASS
+  }
+});
+
+async function sendReportNotification(report) {
+  const mailOptions = {
+    from: `"APZ Reports" <${process.env.MAIL_USER}>`,
+    to: process.env.MAIL_NOTIFY || 'security@apzchain.org',
+    subject: `New ${report.type} report received`,
+    text: `Type: ${report.type}\nContact: ${report.contact || 'N/A'}\n\n${report.description}`
+  };
+
+  try {
+    await transporter.sendMail(mailOptions);
+    console.log('Report email sent');
+  } catch (err) {
+    console.error('Email error:', err);
+  }
+}
+
+module.exports = { sendReportNotification };
